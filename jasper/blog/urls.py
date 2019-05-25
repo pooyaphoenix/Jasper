@@ -3,7 +3,7 @@ from . import views
 
 pp_name='blog'
 urlpatterns=[
-    path('',views.index , name='index'),
+    path('',views.home , name='home'),
 
    # path('list',views.BookListView.as_view(),name='book_list'),
    # path('detail/<int:pk>', views.BookDetailView.as_view(), name='book_detail'),

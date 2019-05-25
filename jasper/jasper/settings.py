@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'jasper',
-        'PASSWORD': '1234',
+        'PASSWORD': '546dragon',
         'USER': 'postgres',
         'PORT': 5432
     }

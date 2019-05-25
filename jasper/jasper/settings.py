@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'jasper',
-        'PASSWORD': '546dragon',
+        'PASSWORD': '1234',
         'USER': 'postgres',
         'PORT': 5432
     }

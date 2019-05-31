@@ -8,7 +8,18 @@
     </head>
     <body>
             {% block body %}  
-
+            <div class="center">
+                <h1>جزوه ی مورد نظر خود را بیایید</h1>
+                {% if allof_books %}
+                  <ul class="boxouter">
+                      {% for Book in allof_books %}
+                        <li class="box"><a href="/blog/{{Book.id}}">{{Book.name}} , {{ Book.master}}</a></li>
+                      {% endfor %}
+                  </ul>
+                {% else %}
+                  <p style="color:tomato">not available.</p>
+                {% endif %}
+              </div>
             {% endblock %}
     </body>
 </html>

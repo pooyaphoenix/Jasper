@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% block head %}
+        <title>Books</title>
+        {% endblock %}
+    </head>
+    <body>
+            {% block body %}  
+            <ul>
+                {% for Book in allof_books %}
+                  <li><p>{{Book.name}} , {{ Book.master}} , {{ Book.price }}
+                , {{ Book.description }}  </p></li>
+                {% endfor %}
+            </ul>
+            {% endblock %}
+    </body>
+</html>

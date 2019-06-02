@@ -3,23 +3,36 @@
     <head>
         <meta charset="utf-8">
         {% block head %}
+        
         <title>Home</title>
         {% endblock %}
     </head>
+     {% block body %} 
     <body>
-            {% block body %}  
+        <h1> {{ text }} </h1>
             <div class="center">
-                <h1>جزوه ی مورد نظر خود را بیایید</h1>
+                <h1 style="text-align:center;">جزوه ی مورد نظر خود را بیایید</h1>
                 {% if allof_books %}
                   <ul class="boxouter">
                       {% for Book in allof_books %}
-                        <li class="box"><a href="/blog/{{Book.id}}">{{Book.name}} , {{ Book.master}}</a></li>
+                        <li class="box"><a href="/{{Book.id}}">{{Book.name}} , {{ Book.master}}</a></li>
                       {% endfor %}
                   </ul>
                 {% else %}
                   <p style="color:tomato">not available.</p>
                 {% endif %}
-              </div>
-            {% endblock %}
-    </body>
+              <!-- </div>
+              <div class="container">
+                <h2>fill</h2>
+                <form method="POST">
+                  {% csrf_token %}
+                  <input type="text" name="lname"><br>
+                  <button type="submit">submit</button>
+                </form>
+               
+              </div> -->
+              
+    </body>         
+   {% endblock %}
+
 </html>

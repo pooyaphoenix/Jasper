@@ -1,28 +1,36 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-         <style>
-          .box {
-            background-color: rgb(245, 245, 247);
-            width: 25%;
-            padding: 25px;
-            border: 8px solid rgb(15, 15, 15);
-          }
-          .boxouter {
-            background-color: rgb(245, 245, 247);
-            width: 75%;
-            padding: 25px;
-            border: 8px solid rgb(15, 15, 15);
-          }
-          .center {
-            margin: 5% 0% 10% 20%;
-          }
-          </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <script>
+          
+        </script>
+             <style>
+  
+  .box {
+background-color: rgb(245, 245, 247);
+width: 25%;
+padding: 25px;
+border: 2px solid rgb(179, 178, 178);
+margin-bottom: 1%;
+margin-left: 40%;
+}
+.boxouter {
+background-color: rgb(245, 245, 247);
+width: 75%;
+padding: 25px;
+}
+.center {
+margin: 5% 0% 10% 20%;
+}
+             </style>
           {% block head %}
           <title>jasper</title>
           {% endblock %}
@@ -37,11 +45,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" href="#" style="background-color:black">جاسپر</a>
+            <a class="navbar-brand" href="/jasper/" style="background-color:black">جاسپر</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">خانه</a></li>
+              <li class="active"><a href="/">خانه</a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">مقطع <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -53,7 +61,7 @@
               <li><a href="#">دانشگاه</a></li>
               <li><a href="#">رشته</a></li>
             </ul>
-<!-- دگمه و فرم جستجو-->
+<!-- Search-->
             <form class="navbar-form navbar-left" action="/action_page.php">
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="جستجو" name="search">
@@ -64,16 +72,31 @@
                   </div>
                 </div>
               </form>
-<!-- ارجاع دهنده ی صفحه ی ورود و عضویت --> 
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> ثبت نام</a></li>
+              <!--register and login-->              
+              <ul class="nav navbar-nav navbar-right">
+              <li><a href="/register"><span class="glyphicon glyphicon-user"></span> ثبت نام</a></li>
               <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> ورود</a></li>
             </ul>
           </div>
         </div>
       </nav>
-      {% block body %}  
-      <div class="container">
+    
+
+   
+   
+    
+    
+  
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{message.tag}}">
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% block body %}
+        <div class="content">
         <h3>صفحه ی اصلی</h3>
         <p>این صفحه همیشه ثابت است و در تمامی قالب ها محتوای آن تکرار خواهد شد</p>
       </div>

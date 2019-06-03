@@ -37,6 +37,7 @@ margin: 5% 0% 10% 20%;
     </head>
 
  <body style="font-family: vazir">
+  <div style="background-color:#28a745;  padding: 2px 0px 1px 0px; ">
     <nav class="navbar navbar-expand-lg navbar-light bg-  " style="background-color: #a6ffb2;">
       <!--جستجو-->
         <form class="form-inline">
@@ -92,15 +93,12 @@ margin: 5% 0% 10% 20%;
         <img src="docs/Untitled-5.png" width="30" height="30" class="d-inline-block align-top" alt="">
         جاسپر
       </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-   
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
    </nav>
-   
-    
-    
-  
+
+ </div>
 
       {% if messages %}
         {% for message in messages %}
@@ -109,11 +107,14 @@ margin: 5% 0% 10% 20%;
           </div>
         {% endfor %}
       {% endif %}
+
+
       {% block body %}
         <div class="content">
         <h3>صفحه ی اصلی</h3>
         <p>این صفحه همیشه ثابت است و در تمامی قالب ها محتوای آن تکرار خواهد شد</p>
       </div>
       {% endblock %}
+
  </body>
 </html>

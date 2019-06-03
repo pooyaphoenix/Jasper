@@ -6,12 +6,14 @@ from .models import Field
 from .models import Universty
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('last_name','first_name','phone_number','description')
+    list_display = ('last_name','first_name','city','phone_number','description')
 
     fields = [
         'first_name'
         ,'last_name'
-        , ('phone_number', 'city'),
+        , 'phone_number'
+        , 'city'
+        ,
     ]
 
 

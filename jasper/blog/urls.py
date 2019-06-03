@@ -1,9 +1,14 @@
-from django.urls import path,re_path
+from django.urls import path
+from django.conf.urls import url
 from . import views
+
 
 pp_name='blog'
 urlpatterns=[
-    path('',views.home , name='home'),
+    path('',views.index , name='index'),
+    path('<int:book_id>/', views.detail , name= 'detail'),
+    path('register/', views.register, name='register'),
+    path('jasper/', views.jasper , name = 'jasper'),
 
    # path('list',views.BookListView.as_view(),name='book_list'),
    # path('detail/<int:pk>', views.BookDetailView.as_view(), name='book_detail'),

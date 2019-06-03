@@ -9,28 +9,48 @@
     </head>
      {% block body %} 
     <body>
-        <h1> {{ text }} </h1>
             <div class="center">
                 <h1 style="text-align:center; margin-right: 20%">جزوه ی مورد نظر خود را بیایید</h1>
                 {% if allof_books %}
-                  <ul class="boxouter">
+                  <ul class="boxouter card-header bg-transparent border-  card border-success mb-3">
                       {% for Book in allof_books %}
-                        <li class="box"><a href="/{{Book.id}}">{{Book.name}} , {{ Book.master}}</a></li>
+                        <div class="box card-body text-success card-title"><a class="card-text" href="/{{Book.id}}">{{Book.name}} , {{ Book.master}}
+                          <div class="card-footer bg-transparent border-success">
+                              <button class="center btn btn-outline-success" >باز کردن</button>
+                          </div>
+                        </a></div>
                       {% endfor %}
                   </ul>
                 {% else %}
                   <p class="boxouter box" style="color:tomato">not available.</p>
                 {% endif %}
-              <!-- </div>
-              <div class="container">
-                <h2>fill</h2>
-                <form method="POST">
-                  {% csrf_token %}
-                  <input type="text" name="lname"><br>
-                  <button type="submit">submit</button>
-                </form>
-               
-              </div> -->
+              
+                
+               <!-- <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header bg-transparent border-success">Header</div>
+                    <div class="card-body text-success">
+                      <h5 class="card-title">Success card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-success">
+                        <button class="btn btn-outline-success" type="submit">باز کردن</button>
+                    </div>
+                  </div>
+                  
+
+                  <div class="container">
+                      <h2>Stretched Link in Card</h2>
+                      <p>Add the .stretched-link class to a link inside the card, and it will make the whole card clickable (the card will act as a link):</p>
+                      <div class="card" style="width:400px">
+                        <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
+                        <div class="card-body">
+                          <h4 class="card-title">John Doe</h4>
+                          <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                          <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+                        </div>
+                      </div>
+                    </div> 
+                    -->
               
     </body>         
    {% endblock %}

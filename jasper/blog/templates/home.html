@@ -11,7 +11,7 @@
     <body>
         <h1> {{ text }} </h1>
             <div class="center">
-                <h1 style="text-align:center;">جزوه ی مورد نظر خود را بیایید</h1>
+                <h1 style="text-align:center; margin-right: 20%">جزوه ی مورد نظر خود را بیایید</h1>
                 {% if allof_books %}
                   <ul class="boxouter">
                       {% for Book in allof_books %}
@@ -19,7 +19,7 @@
                       {% endfor %}
                   </ul>
                 {% else %}
-                  <p style="color:tomato">not available.</p>
+                  <p class="boxouter box" style="color:tomato">not available.</p>
                 {% endif %}
               <!-- </div>
               <div class="container">

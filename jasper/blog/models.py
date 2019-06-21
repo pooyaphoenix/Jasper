@@ -2,10 +2,6 @@ from django.db import models
 import uuid
 from django.contrib.auth import get_user_model
 
-class Universty(models.Model):
-    name = models.CharField(max_length =50)
-    def __str__(self):
-        return self.name
 
 
 
@@ -30,9 +26,10 @@ class Book(models.Model):
 
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
     field = models.ForeignKey('Field', on_delete=models.SET_NULL, null=True)
+    university = models.ForeignKey('Universty', on_delete=models.SET_NULL, null=True)
 
     #many to mnay
-    university = models.ManyToManyField(Universty, help_text='')
+    #university = models.ManyToManyField(Universty, help_text='')
 
 
 class User(models.Model):
@@ -69,15 +66,20 @@ class Field (models.Model):
         ('b', 'کارشناسی'),
         ('m', 'کارشناسی ارشد'),
         ('d', 'دکتری'),
+        ('a', 'غیر دانشگاهی/آزاد'),
     )
     status = models.CharField(max_length=1, choices=SECTION,
                               blank=True
                               , default='b'
-                              , help_text='مقطع مروبطه ی کتاب یا جزوه را انتخاب کنید ')
+                              , help_text='مقطع مربوطه ی کتاب یا جزوه را انتخاب کنید ')
 
     def __str__(self):
         return self.name
 
+class Universty(models.Model):
+    name = models.CharField(max_length =50)
+    def __str__(self):
+        return self.name
 
 
 

@@ -40,7 +40,7 @@ class BookAdmin(admin.ModelAdmin):
 
         })
     )
-    list_display = ('name', 'price', 'master', 'field', 'user','status')
+    list_display = ('name', 'price', 'master', 'field', 'user','status','university')
     search_fields = ('name', 'master', 'field')
 
 admin.site.register(Universty)

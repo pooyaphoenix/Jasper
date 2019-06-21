@@ -1,58 +1,91 @@
 {% extends 'base.html' %}
+{%  load static from staticfiles  %}
+
+
+{% block title %}جاسپر{% endblock %}
+
+
+
+
 <html>
-    <head>
-        <meta charset="utf-8">
-        {% block head %}
-        
-        <title>Home</title>
-        {% endblock %}
-    </head>
-     {% block body %} 
-    <body>
-            <div class="center">     
-                  {% if allof_books %}
+<head>
+    <meta charset="utf-8">
+    {% block head %}
 
-                      {% for Book in allof_books %}
+    <title>Home</title>
+    {% endblock %}
+</head>
+{% block body %}
+<body>
 
-                    <div class="card border-success mb-3" style="max-width: 50rem;">
-                        <div class="card-header bg-transparent border-success" style="text-align: center;" dir="rtl" > 
-                          {% if Book.status == 'j' %}
-                          <small class="text-muted">جزوه :</small>
-                          <a class="card-text" style="color: black" href="/{{Book.id}}" >{{Book.name}}</a>
-                          <small class="text-muted">{{Book.field}}</small>
-                          {% else %}
-                          <small class="text-muted">کتاب :</small>
-                          <a class="card-text" style="color: black" href="/{{Book.id}}" >{{Book.name}}</a>
-                          <small class="text-muted">{{Book.field}}</small>
-                          {% endif %}
-                        </div>
-                        <div class="card-body text-success" >
-                          <h5 class="card-title" style="text-align: center; color: black">{{ Book.master}}</h5>
-                          <p class="text-muted" style="text-align: right" dir="rtl">
-                              {{Book.university}}
-                          </p>
-                          <p class="card-text" style="text-align: right; color: black;" dir="rtl">{{ Book.description}}</p>
 
-                          <p class="text-muted">قیمت: {{Book.price}}</p>
-                          <small class="text-muted" dir="rtl">نوشته شده توسط: <a style="color: black" href="#">{{Book.user}}</a></small>
-                        </div>
-                        <div class="card-footer bg-transparent border-success"style="text-align:center;" >
-                           <a href="/{{Book.id}}">
-                            <button class="btn btn-outline-success">
-                              باز کردن
-                            </button>
-                          </a>
-                        </div>
-                      </div>
-                      {% endfor %}
-                  {% else %}
-                  <p class="boxouter center box" style="color:tomato; text-align: center;">جزوه یا کتابی در دیتابیس ذخیره نشده</p>
-                  {% endif %}
-                  <!--
+<div class="card-header bg-transparent border-success" style="position: fixed; width: 20% ;text-align: right;"
+     dir="rtl">
+    <img style="width:15% ; height: 100% ; float: right" src="{% static 'logo.png'%}" alt="paper"/>
+    <a class="card-text" style="color: black ; font-size: 150% ; float: right ; margin-right: 2% ;margin-top: 1% "><p
+            class="tiny">دورنمایی از جاسپر</p></a>
+    <br><br>
+    <p class="text-muted skinny" style="float: left ;text-align: center ">
+    <p class="tiny">جاسپر با هدف حذف کردن کاغذ هایی که توسط داسنجویان و دیگر افراد روزانه هدر میروند ساخته شده است.<br>
+        در سال‌های اخیر از طرفی به دلیل رشد فزاینده جمعیت و به تبع آن افزایش میزان تقاضا و از طرف دیگر کاهش شدید منابع
+        جنگلی صنایع تولید خمیر و کاغذ کشور که برای تامین مواد اولیه خود به درختان جنگلی وابسته‌اند- به دلیل رو به زوال
+        بودن جنگل‌ها و منابع چوبی - با مشکلاتی جدی در تامین مواد اولیه سلولزی مواجه هستند. </p></p>
 
-                 
-             </div>
-    </body>         
-   {% endblock %}
+    <img style="width:100% ; height: 100% ; float: right" src="{% static 'mahak.png'%}" alt="paper"/>
+
+</div>
+
+
+</div>
+
+<div class="center">
+    {% if allof_books %}
+
+    {% for Book in allof_books %}
+
+    <div class="card border-success mb-3" style="max-width: 100%;">
+        <div class="card-header bg-transparent border-success" style="text-align: right;" dir="rtl">
+            {% if Book.status == 'j' %}
+            <img style="width:8% ; height: 100% ; float: right" src="{% static 'paper.png'%}" alt="paper"/>
+            <a class="card-text"
+               style="color: black ; font-size: 150% ; float: right ; margin-right: 2% ;margin-top: 2.5% "
+               href="/{{Book.id}}"><p class="skinny">{{Book.name}}</p></a>
+            <p class="text-muted skinny" style="float: left ; margin: 0% ">{{Book.field}}</p>
+            {% else %}
+            <img style="width:8% ; height: 100% ; float: right" src="{% static 'book.png'%}" alt="paper"/>
+            <a class="card-text"
+               style="color: black ; font-size: 150% ; float: right ; margin-right: 2% ;margin-top: 2.5% "
+               href="/{{Book.id}}"><p class="skinny">{{Book.name}}</p></a>
+            <p class="text-muted skinny" style="float: left ; margin: 0% ">{{Book.field}}</p>
+            {% endif %}
+        </div>
+        <div class="card-body text-success">
+            <img style="width:3% ;  float: right" src="{% static 'master.png'%}" alt="paper"/>
+            <p class="card-title skinny" style="padding-top: 0.5%;padding-right: 4%; text-align: right; color: black">{{Book.master}}</p>
+            <img style="width:3% ;  float: right" src="{% static 'university.png'%}" alt="paper"/>
+            <p class="text-muted skinny" style=" padding-top: 0.5%;padding-right: 4%; text-align: right" dir="rtl">
+                {{Book.university}}
+            </p>
+            <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ Book.description}}</p>
+
+            <p class="skinny" dir="rtl"><a style="color: black ; float: right" href="#">{{Book.user}}</a></p>
+        </div>
+        <a href="/{{Book.id}}">
+            <button class="btn btn-outline-success" style="float: left ; margin: 2% ; padding : 2% 5% 0% 5%">
+                <p class="skinny"> نمایش جزئیات </p>
+            </button>
+
+        </a>
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <p class="boxouter center box thick" style="color:tomato; text-align: center;">.جزوه یا کتابی وجود ندارد </p>
+    {% endif %}
+
+
+</div>
+</body>
+{% endblock %}
 
 </html>

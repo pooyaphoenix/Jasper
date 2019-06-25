@@ -1,0 +1,35 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(iransans.ttf);
+}
+
+p.thick {
+    font-weight: bold;
+    color : #191920;
+    font-family: myFirstFont;
+    font-size: 120%;
+
+}
+p.skinny{
+    font-weight: normal;
+    color : #1d1e1e;
+    font-family: myFirstFont;
+    font-size: 100%;
+}
+p.tiny{
+    font-weight: normal;
+    color : #1d1e1e;
+    font-family: myFirstFont;
+    font-size: 70%;
+}
+.book_detail_box{
+    float: right;
+    direction: rtl;
+}
+#logo-image{
+    height: 20%;
+}
+
+
+
+

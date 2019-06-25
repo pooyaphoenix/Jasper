@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+
+
+{% block searchbar %}
+
+<div style="padding: 2% ; background-color: #121443 ">
+    <form class="form-inline center" action="{{ request.get_host }}/blog/search/" method="get"> >
+        <div class="input-group" style="width:70% ; direction: rtl">
+            <input id="searchinput" name="q" class="form-control mr-sm-2 " type="search"
+                   placeholder="در مورد جزوه/ کتاب مورد نظر کلمه ای تایپ کنید..." aria-label="Search"
+                   style="text-align: center; margin-left: 1% ;height:52px">
+            <div class="input-group-btn">
+                <button class="btn btn-outline-success" onclick="searchform.submit()" type="submit"
+                        style="background-color: #246609"><p class="skinny" style="font-size: 90% ; color: white">
+                    جستجو</p></button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

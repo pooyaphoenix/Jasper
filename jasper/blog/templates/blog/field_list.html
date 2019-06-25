@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{%  load static from staticfiles  %}
+<title>{% block title %}لیست رشته ها{% endblock %}</title>
+{% block body %}
+<div class="card-header bg-transparent border-success"
+     style="position: fixed; width: 20% ;text-align: right; padding-top: 4.15%" dir="rtl">
+    <img style="width:15% ; height: 100% ; float: right" src="{% static 'logo.png'%}" alt="paper"/>
+    <a class="card-text" style="color: black ; font-size: 150% ; float: right ; margin-right: 2% ;margin-top: 1% "><p
+            class="tiny">راهنما !</p></a>
+    <br><br>
+    <p class="text-muted skinny" style="float: left ;text-align: center ">
+    <p class="tiny">به دنبال دانشگاه محل تحصیل خود در لیست بگردید . </p></p>
+
+</div>
+
+
+<br><br>
+
+<div class="center">
+    {% if allof_filed %}
+
+    {% for Field in allof_filed %}
+
+    <div class="card border-success mb-3" style="max-width: 70%;">
+
+        <div class="card-body text-success">
+            <div>
+                <a href="/field/{{Field.id}}">
+                    <button class="btn btn-outline-success" style="float: left ; padding : 2% 5% 0% 5%">
+                        <p class="skinny"> نمایش جزوات / کتابها</p>
+                    </button>
+                </a>
+                <img style="width:9% ; float: right" src="{% static 'field.png'%}" alt="paper"/>
+                <p class="skinny" style="text-align: right ; text-align: right ;padding-top: 2%; padding-right: 10%"
+                   dir="rtl">{{Field.name}}</p>
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <p class="boxouter center box" style="color:tomato; text-align: center;">دانشگاهی یافت شد .</p>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}
+
+{% endblock %}
+
+

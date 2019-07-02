@@ -62,7 +62,7 @@ def register(request):
                   form.save()
                   username = form.cleaned_data.get('username')
                   messages.success(request , f'!ایجاد شد {username}  حساب کاربری')
-                  return redirect('index')
+                  return redirect('/login')
       else:
             form = userform2()
       context = {
@@ -144,3 +144,7 @@ def search(request):
       #}
       
       #return render(request, self.template_name , context)
+
+
+#پروفایل کاربری
+      def profile(request):

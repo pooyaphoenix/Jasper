@@ -79,6 +79,17 @@ p.tiny{
     background-color: #121443;
     color: #f1f1f1; 
     direction: rtl;
-    width: 100%
+    width: 100%;
+    direction: rtl;
 
+}
+
+.loggedout {
+
+    text-align: center;
+    background-color: #121443;
+    color: #f1f1f1; 
+    direction: rtl;
+    width: 50%;
+    direction: rtl;
 }

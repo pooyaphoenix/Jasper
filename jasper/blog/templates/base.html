@@ -44,15 +44,16 @@
            <li class="nav-item">
              <a class="nav-link"  href="/post/new"><p class="skinny">ثبت آگهی</p></a>
           </li>
-
+          {% if user.is_authenticated %}
+          <a class="nav-link"  href="/logout"><p class="skinny">خروج</p></a>
+          {% else %}
           <li class="nav-item">
              <a class="nav-link"  href="/register"><p class="skinny">عضویت</p></a>
           </li>
-
           <li class="nav-item">
-             <a class="nav-link"  href="#"><p class="skinny">ورود</p></a>
+             <a class="nav-link"  href="/login"><p class="skinny">ورود</p></a>
           </li>
-
+          {% endif %}
 
 
           <li class="nav-item dropdown" style="">
@@ -118,9 +119,16 @@
   </div>
 
 <div class="sidebar">
+  {% if user.is_authenticated %}
+    <a class="active" href="#contact"> پروفایل کاربری </a>
+    <a class="active" href="#contact">دروس عمومی</a>
+    <a class="active" href="#about">دروس پایه</a>
+    <a class="active" href="#about">دروس اختصاصی</a>
+{% else %}
   <a class="active" href="#contact">دروس عمومی</a>
   <a class="active" href="#about">دروس پایه</a>
   <a class="active" href="#about">دروس اختصاصی</a>
+  {% endif %}
 </div>
 
 

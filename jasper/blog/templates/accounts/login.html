@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+<html>
+  <head>
+    {% block head %}
+    <title>ورود</title>
+    {% endblock %}
+  </head>
+  <body>
+{% block body %}
+<div class="container" style="margin-right: 30%;">
+        <form  method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+             <legend class="border bottom mb-4  ozvshavid"> صفحه ی ورود</legend>
+             {{form|crispy}}
+          </fieldset>
+          <div class="form_group">
+            <button class="btn btn-outline-info" type="submit" style="text-align:center; width: 100%">ورود</button>
+          </div>
+        </form>
+        <div class="border-top pt-3" style="text-align: right;direction: rtl;">
+          <small class="text-muted">
+            قبلا ثبت نام نکرده اید؟ <a class="ml-2" href="/register">ثبت نام</a>
+          </small>
+        </div>
+</div>
+{% endblock %}
+
+   </body>
+</html>

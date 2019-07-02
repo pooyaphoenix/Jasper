@@ -31,5 +31,54 @@ p.tiny{
 }
 
 
+.sidebar {
+  margin-right: 1%;
+  float: right;
+  width: 20%;
+  position: static;
+  height: 100%;
+  overflow: auto;
+  margin-top: 1%;
+}
 
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  margin-top: 1%;
+  clear: both;
+  text-align: right;
+  direction: rtl;
+}
 
+.sidebar a.active {
+  background-color: #121443;
+  color: white;
+}
+.sidebar p.active {
+    background-color: #121443;
+    color: white;
+  }
+  
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.nejat {
+        text-align: center;
+        background-color: #246609;
+        color: #f1f1f1; 
+        direction: rtl;
+}
+
+.ozvshavid {
+
+    text-align: center;
+    background-color: #121443;
+    color: #f1f1f1; 
+    direction: rtl;
+    width: 100%
+
+}

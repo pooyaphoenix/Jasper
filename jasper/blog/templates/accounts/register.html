@@ -8,18 +8,18 @@
   </head>
   <body>
 {% block body %}
-<div class="container">
+<div class="container" style="margin-right: 30%;">
         <form  method="POST">
           {% csrf_token %}
           <fieldset class="form-group">
-             <legend class="border bottom mb-4">عضو شوید</legend>
+             <legend class="border bottom mb-4  ozvshavid">عضو شوید</legend>
              {{form|crispy}}
           </fieldset>
           <div class="form_group">
-            <button class="btn btn-outline-info" type="submit">ثبت نام</button>
+            <button class="btn btn-outline-info" type="submit" style="text-align:center; width: 100%">ثبت نام</button>
           </div>
         </form>
-        <div class="border-top pt-3">
+        <div class="border-top pt-3" style="text-align: right;direction: rtl;">
           <small class="text-muted">
             قبلا ثبت نام کرده اید؟ <a class="ml-2" href="#">ورود</a>
           </small>

@@ -1,15 +1,23 @@
 from django import forms
-from blog.models import User
+from django.contrib.auth.models import User
 from .models import Book
 from django.contrib.auth.forms import UserCreationForm
 
 
 
 
-class UserForm(forms.ModelForm):
+class userform2(UserCreationForm):
+    email = forms.EmailField()
+
     class Meta:
         model = User
-        exclude = ['description']
+        fields = ('username','email')
+
+#class UserForm(forms.ModelForm):
+    #class Meta:
+        #model = User
+        #exclude = ['description']
+
 class PostForm(forms.ModelForm):
 
     class Meta:

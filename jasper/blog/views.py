@@ -2,13 +2,13 @@ from django.shortcuts import render,redirect
 from .models import Book,Universty,Field
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import UserForm
-from .forms import PostForm
+from .forms import userform2 , PostForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import redirect
-from django.http import HttpResponse
 from django.contrib.postgres.search import SearchVector
+
+
 # Create your views here.
 def index(request):
 
@@ -34,24 +34,42 @@ def jasper(request):
 
 
 #صفحه ی ثبت نام
+#def register(request):
+      #if request.method == 'POST' :
+            #form = UserForm(request.POST)
+            #if form.is_valid():
+             #     form.save()
+              #    username = form.cleaned_data.get('username')
+               #   messages.success(request , f'!ایجاد شد {username}  حساب کاربری')
+                #  return redirect('index')
+      #else:
+       #     form = UserForm()
+
+      
+
+
+     # context = {
+      #      'form' : form,
+      #}
+      #return render(request , 'accounts/register.html',context)
+
+
+#صفحه ثبت نام 2
 def register(request):
-      if request.method == 'POST' :
-            form = UserForm(request.POST)
+      if request.method == 'POST':
+            form = userform2(request.POST)
             if form.is_valid():
                   form.save()
                   username = form.cleaned_data.get('username')
                   messages.success(request , f'!ایجاد شد {username}  حساب کاربری')
                   return redirect('index')
       else:
-            form = UserForm()
-
-      
-
-
+            form = userform2()
       context = {
             'form' : form,
       }
-      return render(request , 'accounts/register.html',context)
+      return render(request ,'accounts/register.html',context)
+
 
 
 def post_new(request):

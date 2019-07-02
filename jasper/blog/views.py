@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import redirect
 from django.contrib.postgres.search import SearchVector
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -70,8 +70,12 @@ def register(request):
       }
       return render(request ,'accounts/register.html',context)
 
+#پروفایل کاربری
+@login_required
+def myprofile(request):
+      return render(request, 'accounts/profile.html')
 
-
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -146,5 +150,5 @@ def search(request):
       #return render(request, self.template_name , context)
 
 
-#پروفایل کاربری
-      def profile(request):
+
+

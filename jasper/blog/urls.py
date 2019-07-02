@@ -14,7 +14,7 @@ urlpatterns=[
 
     path('register/', views.register, name='register'),
     path('jasper/', views.jasper , name = 'jasper'),
-    path('profile/', views.profile , name = 'profile'),
+    path('myprofile/', views.myprofile , name = 'myprofile'),
 
 
     path('post/new/', views.post_new, name='post_new'),

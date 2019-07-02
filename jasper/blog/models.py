@@ -9,7 +9,7 @@ class Book(models.Model):
     name = models.CharField(max_length=100)
     master = models.CharField(max_length=20,null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    description=models.CharField(max_length=200,help_text="در مورد جزوه و یا کتاب خود بنویسید .",blank=True)
+    description=models.TextField(max_length=200,help_text="در مورد جزوه و یا کتاب خود بنویسید .",blank=True)
     STATUS = (
         ('j', 'جزوه'),
         ('k', 'کتاب'),
@@ -18,6 +18,17 @@ class Book(models.Model):
                               blank=True
                               , default='j'
                               , help_text='نوع')
+    
+    STATUS2 = (
+        ('o', 'عمومی'),
+        ('e', 'اختصاصی'),
+        ('p','پایه'),
+    )
+    status2 = models.CharField(max_length=1, choices=STATUS2,
+                              blank=True
+                              , default='o'
+                              , help_text='نوع')
+
     class Meta:
         ordering =["name","price"]
 

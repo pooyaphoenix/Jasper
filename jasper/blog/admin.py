@@ -13,7 +13,6 @@ class UserAdmin(admin.ModelAdmin):
         ,'last_name'
         , 'phone_number'
         , 'city'
-        ,
     ]
 
 

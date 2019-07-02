@@ -45,16 +45,16 @@
 
     {% for Book in allof_books %}
 
-    <div class="card border-success mb-3" style="max-width: 100%;">
+    <div class="card border-success mb-3" style="max-width: 100%; margin-right: 25%; margin-left: 25%;">
         <div class="card-header bg-transparent border-success" style="text-align: right;" dir="rtl">
             {% if Book.status == 'j' %}
-            <img style="width:8% ; height: 100% ; float: right" src="{% static 'paper.png'%}" alt="paper"/>
+            <img style="width:8% ; height: 8% ; float: right" src="{% static 'paper.png'%}" alt="paper"/>
             <a class="card-text"
                style="color: black ; font-size: 150% ; float: right ; margin-right: 2% ;margin-top: 2.5% "
                href="/{{Book.id}}"><p class="skinny">{{Book.name}}</p></a>
             <p class="text-muted skinny" style="float: left ; margin: 0% ">{{Book.field}}</p>
             {% else %}
-            <img style="width:8% ; height: 100% ; float: right" src="{% static 'book.png'%}" alt="paper"/>
+            <img style="width:8% ; height: 8% ; float: right" src="{% static 'book.png'%}" alt="paper"/>
             <a class="card-text"
                style="color: black ; font-size: 150% ; float: right ; margin-right: 2% ;margin-top: 2.5% "
                href="/{{Book.id}}"><p class="skinny">{{Book.name}}</p></a>
@@ -70,7 +70,9 @@
             </p>
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ Book.description}}</p>
 
-            <p class="skinny" dir="rtl"><a style="color: black ; float: right" href="#">{{Book.user}}</a></p>
+            <small class="text-muted" dir="rtl">
+                <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{user.username}}</a>
+            </small>
         </div>
         <a href="/{{Book.id}}">
             <button class="btn btn-outline-success" style="float: left ; margin: 2% ; padding : 2% 5% 0% 5%">

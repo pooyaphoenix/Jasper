@@ -18,7 +18,9 @@
 {% block body %}
 <body>
 
-
+    {% if user.is_authenticated %}
+     
+    {% else %}
 <div class="card-header bg-transparent border-success" style="position: fixed; width: 20% ;text-align: right;"
      dir="rtl">
     <img style="width:15% ; height: 100% ; float: right" src="{% static 'logo.png'%}" alt="paper"/>
@@ -35,7 +37,7 @@
 
 </div>
 
-
+{% endif %}
 </div>
 
 <div class="center">

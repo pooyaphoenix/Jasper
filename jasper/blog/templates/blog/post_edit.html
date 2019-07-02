@@ -3,17 +3,19 @@
 {% block content %}
 
 
-<div class="container " style="text-align: right">
+<div class="container " style="text-align: right; margin-right: 40%;">
         <form  method="POST" >
           {% csrf_token %}
           <fieldset class="form-group skinny" style="width: 40%">
-              <p class="thick" style=" padding:1%  ;font-size: 100% ;color: #282830">ثبت آگهــی</p>
+              <p class="thick ozvshavid" style=" padding:1%  ;font-size: 100% ;">ثبت آگهــی</p>
             <div >
               {{form|crispy}}
              </div>
           </fieldset>
           <div class="form_group">
-            <button class="btn btn-outline-info" type="submit" style="width: 40%"><p class="thick" style=" font-size: 100% ;color: #000000">ثبت آگهــی</p></button>
+            <button class="btn btn-outline-info" type="submit" style="width: 40%">
+              <p class="thick" style=" font-size: 100% ;color: #000000">ثبت آگهــی</p>
+            </button>
           </div>
         </form>
         <div class="border-top pt-3">

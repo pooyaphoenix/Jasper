@@ -118,12 +118,37 @@
   <p></p>
   </div>
 
+  {% if user.is_authenticated %}
+  <div class="card-header bg-transparent border-success" style="position: fixed; width: 20% ;text-align: center; margin-top:-5%;" dir="rtl">
+            
+      <br><br>
+      <img style="width:40% ; height: 15% ; text-align: center;" src="{% static 'accountimg.png' %}" alt="paper" />
+      <a class="card-text" style="color: black ; font-size: 150%  ; margin-right: 2% ;">
+              <p class="tiny" style="text-align: center; ">{{ user.username }}</p></a>
+
+              <button style=" clear: both; width:100%; margin-bottom: 1%;">
+                    <a class="tiny" style="text-align:center;"  href="#">صندوق پیام</a>
+              </button> <br>
+
+              <button style=" clear: both; width:100%; margin-bottom: 1%;">
+                    <a class="tiny" style="text-align:center;" href="/post/new"> ثبت آگهی </a> 
+              </button> <br>
+
+              <button style=" clear: both; width:100%; margin-bottom: 1%;">
+                    <a class="tiny" style="text-align:center;" href="#">آگهی های من</a> 
+              </button> <br>
+
+  </div>
+  {% endif %}
+
+
 <div class="sidebar">
   {% if user.is_authenticated %}
     <a class="active" href="/myprofile"> پروفایل کاربری </a>
     <a class="active" href="#contact">دروس عمومی</a>
     <a class="active" href="#about">دروس پایه</a>
     <a class="active" href="#about">دروس اختصاصی</a>
+    <a class="active" href="/logout">خروج از حساب کاربری</a>
 {% else %}
   <a class="active" href="#contact">دروس عمومی</a>
   <a class="active" href="#about">دروس پایه</a>

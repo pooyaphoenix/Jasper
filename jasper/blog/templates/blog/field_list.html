@@ -3,6 +3,9 @@
 {%  load static from staticfiles  %}
 <title>{% block title %}لیست رشته ها{% endblock %}</title>
 {% block body %}
+{% if user.is_authenticated %}
+     
+    {% else %}
 <div class="card-header bg-transparent border-success"
      style="position: fixed; width: 20% ;text-align: right; padding-top: 4.15%" dir="rtl">
     <img style="width:15% ; height: 100% ; float: right" src="{% static 'logo.png'%}" alt="paper"/>
@@ -10,10 +13,10 @@
             class="tiny">راهنما !</p></a>
     <br><br>
     <p class="text-muted skinny" style="float: left ;text-align: center ">
-    <p class="tiny">به دنبال دانشگاه محل تحصیل خود در لیست بگردید . </p></p>
+    <p class="tiny">به دنبال رشته ی مورد نظر خود در لیست بگردید . </p></p>
 
 </div>
-
+{% endif %}
 
 <br><br>
 

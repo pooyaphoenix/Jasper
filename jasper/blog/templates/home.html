@@ -69,9 +69,8 @@
                 {{Book.university}}
             </p>
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ Book.description}}</p>
-
             <small class="text-muted" dir="rtl">
-                <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{user.username}}</a>
+                <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{Book.user}}</a>
             </small>
         </div>
         <a href="/{{Book.id}}">

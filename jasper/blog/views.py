@@ -75,19 +75,20 @@ def register(request):
 def myprofile(request):
       return render(request, 'accounts/profile.html')
 
+#ثبت آگهی
 @login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
-
+            Book.user=username.userform2
             return redirect('/')
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
-
+#لیست دانشگاه ها
 def universitylist(request):
     allof_uni = Universty.objects.all()
 
@@ -96,6 +97,8 @@ def universitylist(request):
     }
 
     return render(request, 'blog/universiy_list.html',context)
+
+#لیست رشته ها
 def fieldlist(request):
     allof_filed = Field.objects.all()
 
@@ -105,6 +108,7 @@ def fieldlist(request):
 
     return render(request, 'blog/field_list.html',context)
 
+#جزوه های موجود در دانشگاه مورد نظر
 def university_books(request, uni_id):
     allof_books = Book.objects.filter(university=uni_id)
     context = {
@@ -112,6 +116,7 @@ def university_books(request, uni_id):
     }
     return render(request, 'home.html', context)
 
+#جزوه های موجود در رشته ی مورد نظر
 def field_books(request, field_id):
     allof_books = Book.objects.filter(field=field_id)
     context = {

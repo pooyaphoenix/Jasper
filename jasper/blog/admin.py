@@ -1,8 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
+from .models import User2 , profile , Book , Field , Universty
 
-from .models import User , profile , Book , Field , Universty
-
-@admin.register(User)
+@admin.register(User2)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('last_name','first_name','city','phone_number','description')
 

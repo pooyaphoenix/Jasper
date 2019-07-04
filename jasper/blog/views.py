@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import Book,Universty,Field,User
+from .models import Book,Universty,Field
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import userform2 , PostForm
 from django.urls import reverse_lazy
@@ -81,7 +82,7 @@ def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            Book.user=userform2.username
+            Book.user=User.username
             form.save()
             return redirect('/')
     else:

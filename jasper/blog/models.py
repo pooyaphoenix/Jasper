@@ -43,8 +43,8 @@ class Book(models.Model):
     #university = models.ManyToManyField(Universty, help_text='')
 
 
-class User(models.Model):
-    username=models.CharField(max_length=100 )
+class User2(models.Model):
+    username2=models.CharField(max_length=100 )
     password=models.CharField(max_length=50 )
     email=models.CharField(max_length=50 )
     first_name=models.CharField(max_length=100)

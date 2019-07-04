@@ -13,13 +13,13 @@ class userform2(UserCreationForm):
         model = User
         fields = ('username','email')
 
-class UserForm(forms.ModelForm):
-    class Meta:
-        model = User
-        exclude = ['description']
+#class UserForm(forms.ModelForm):
+   # class Meta:
+   #     model = User
+   #     exclude = ['description']
 
 class PostForm(forms.ModelForm):
 
     class Meta:
         model = Book
-        fields = ('name', 'master','field','university','status','status2','price','description',)
+        fields = ('name', 'master','field','university','status','status2','price','description')

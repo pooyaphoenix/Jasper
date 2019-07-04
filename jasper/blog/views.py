@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Book,Universty,Field
+from .models import Book,Universty,Field,User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import userform2 , PostForm
@@ -22,7 +22,7 @@ def index(request):
 
 def detail(request,book_id):
 
-
+      
       bookdetail = Book.objects.get(pk = book_id)
       context = {
             'bookdetail' : bookdetail,
@@ -81,8 +81,8 @@ def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
+            Book.user=userform2.username
             form.save()
-            Book.user=username.userform2
             return redirect('/')
     else:
         form = PostForm()

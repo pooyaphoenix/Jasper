@@ -1,9 +1,7 @@
 from django.contrib import admin
 
-from .models import User
-from .models import Book
-from .models import Field
-from .models import Universty
+from .models import User , profile , Book , Field , Universty
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('last_name','first_name','city','phone_number','description')
@@ -43,3 +41,5 @@ class BookAdmin(admin.ModelAdmin):
     search_fields = ('name', 'master', 'field')
 
 admin.site.register(Universty)
+
+admin.site.register(profile)

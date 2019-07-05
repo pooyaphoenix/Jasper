@@ -9,7 +9,7 @@ from django.views import generic
 from django.shortcuts import redirect
 from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
-
+from django.views.generic import ListView
 
 
 # Create your views here.
@@ -22,6 +22,12 @@ def index(request):
       return render(request , 'home.html',context )
 
 
+#نمایش کتاب ها با list view
+#class base view
+class PostListView(ListView):
+      model = Book
+      template_name = 'home.html' #refrence: <app>/<mode>_<viewType>.html
+      context_object_name = 'allof_books'
 
 def detail(request,book_id):
 

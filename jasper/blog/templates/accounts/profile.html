@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {%  load static from staticfiles  %}
-
-
+{% load crispy_forms_tags %}
 {% block title %}جاسپر{% endblock %}
 
 
@@ -23,7 +22,7 @@
 <body>
 
    
-    <div class="profiletemp" style="padding: 4%; background-color: #555; margin: 0% 25% 0% 25%;">
+    <div class="profiletemp" style="padding: 4%; background-color: rgb(204, 198, 198); margin: 0% 25% 0% 25%;">
         <div class="media">
             <img class="" style="border-radius: 45px; width: 15%;" src="{{ user.profile.image.url }}">
             <div>
@@ -32,6 +31,19 @@
             </div>
         </div>
     </div>
+
+    <div class="container" style="padding: 4%; background-color:#f8f1ff; margin: 0% 25% 0% 21%;">
+        <form  method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset>
+             <legend class="border mb-4" style="text-align: center;">اطلاعات کاربری</legend>
+             {{u_form|crispy}}  
+             {{p_form|crispy}}
+
+          </fieldset>
+          <div class="form_group">
+            <button class="btn btn-outline-info" type="submit" style="text-align:center; width: 70%">بروز رسانی </button>
+          </div>
 
 </body>
 {% endblock %}

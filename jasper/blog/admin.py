@@ -30,7 +30,7 @@ class BookAdmin(admin.ModelAdmin):
     list_filter = ('status','field')
     fieldsets = (
         (None,{
-            'fields': ('name', 'description', 'master', 'status')
+            'fields': ('name', 'description', 'master', 'status','date_posted')
         }),
         ('second', {
              'fields': ('price', 'user', 'field', 'university')

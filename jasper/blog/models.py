@@ -3,9 +3,10 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from PIL import Image
-
+import datetime
 
 class Book(models.Model):
+    date_posted = models.DateTimeField(default=datetime.datetime.now(), blank=True)
     name = models.CharField(max_length=100)
     master = models.CharField(max_length=20,null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)

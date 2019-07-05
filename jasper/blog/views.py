@@ -28,6 +28,7 @@ class PostListView(ListView):
       model = Book
       template_name = 'home.html' #refrence: <app>/<mode>_<viewType>.html
       context_object_name = 'allof_books'
+      ordering = ['-date_posted']
 
 def detail(request,book_id):
 
@@ -96,9 +97,6 @@ def post_new(request):
         if form.is_valid():
             form.save()
             Book.user = User
-            def form_valid(self, form):
-                  form.instance.user = self.request.user
-                  return super().form_valid(form)
             return redirect('/')
     else:
         form = PostForm()

@@ -9,7 +9,7 @@ from django.views import generic
 from django.shortcuts import redirect
 from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
@@ -66,6 +66,22 @@ class PostUpdatelView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             form.instance.author = self.request.user
             return super().form_valid(form)
 
+      def test_func(self):
+            book = self.get_object()
+            if self.request.user == book.author:
+                  return True
+            return False
+
+
+
+
+#حذف پست ها با استفاده از delete view
+#class base view
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+      model = Book
+      success_url = '/'
+      template_name = 'delete.html' #refrence: <app>/<mode>_<viewType>.
+      
       def test_func(self):
             book = self.get_object()
             if self.request.user == book.author:

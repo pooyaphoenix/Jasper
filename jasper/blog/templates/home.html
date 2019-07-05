@@ -74,7 +74,7 @@
                    <img class="rounded-circle" src="{{ Book.user.profile.image.url }}"> 
                 <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{Book.user}}</a>
                 <br>
-                {{ post.date_posted|date:"F d, Y" }}
+                {{ Book.date_posted|date:"F d, Y" }}
             </small>
         </div>
         <a href="/{{Book.id}}">

@@ -36,7 +36,7 @@ class Book(models.Model):
     def __str__(self):
         return '{0}, {1}'.format(self.name,self.price)
 
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
     field = models.ForeignKey('Field', on_delete=models.SET_NULL, null=True)
     university = models.ForeignKey('Universty', on_delete=models.SET_NULL, null=True)
 

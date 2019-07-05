@@ -22,7 +22,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Book
-        fields = ('name', 'master','field','university','status','status2','price','description')
+        fields = ('name', 'master','field','university','status','status2','price','description',)
 
 
 class UserUpdateForm(forms.ModelForm):

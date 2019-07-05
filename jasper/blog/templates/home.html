@@ -63,14 +63,18 @@
         </div>
         <div class="card-body text-success">
             <img style="width:3% ;  float: right" src="{% static 'master.png'%}" alt="paper"/>
-            <p class="card-title skinny" style="padding-top: 0.5%;padding-right: 4%; text-align: right; color: black">{{Book.master}}</p>
+            <p class="card-title skinny" style="padding-top: 0.5%;padding-right: 4%; text-align: right; color: black">
+                {{Book.master}}</p>
             <img style="width:3% ;  float: right" src="{% static 'university.png'%}" alt="paper"/>
             <p class="text-muted skinny" style=" padding-top: 0.5%;padding-right: 4%; text-align: right" dir="rtl">
                 {{Book.university}}
             </p>
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ Book.description}}</p>
             <small class="text-muted" dir="rtl">
+                   <img class="rounded-circle" src="{{ Book.user.profile.image.url }}"> 
                 <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{Book.user}}</a>
+                <br>
+                {{ post.date_posted|date:"F d, Y" }}
             </small>
         </div>
         <a href="/{{Book.id}}">

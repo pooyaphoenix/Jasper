@@ -122,7 +122,7 @@
   <div class="card-header bg-transparent border-success" style="position: fixed; width: 20% ;text-align: center; margin-top:-5%;" dir="rtl">
             
       <br><br>
-      <img style="width:40% ; height: 15% ; text-align: center;" src="{% static 'accountimg.png' %}" alt="paper" />
+      <img class="" style="border-radius:100%; width: 35%; height: 15% ; text-align: center;" src="{{ user.profile.image.url }}" alt="paper">
       <a class="card-text" style="color: black ; font-size: 150%  ; margin-right: 2% ;">
               <p class="tiny" style="text-align: center; ">{{ user.username }}</p></a>
 

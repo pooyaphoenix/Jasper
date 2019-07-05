@@ -10,16 +10,18 @@ from django.shortcuts import redirect
 from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
 
+
+
 # Create your views here.
 def index(request):
 
-      allof_books = Book.objects.all()
-
       context = {
-            'allof_books' : allof_books
+            'allof_books' : Book.objects.all()
       }
 
       return render(request , 'home.html',context )
+
+
 
 def detail(request,book_id):
 
@@ -33,26 +35,6 @@ def detail(request,book_id):
 def jasper(request):
       return render(request,'jasper.html')
 
-
-#صفحه ی ثبت نام
-#def register(request):
-      #if request.method == 'POST' :
-            #form = UserForm(request.POST)
-            #if form.is_valid():
-             #     form.save()
-              #    username = form.cleaned_data.get('username')
-               #   messages.success(request , f'!ایجاد شد {username}  حساب کاربری')
-                #  return redirect('index')
-      #else:
-       #     form = UserForm()
-
-      
-
-
-     # context = {
-      #      'form' : form,
-      #}
-      #return render(request , 'accounts/register.html',context)
 
 
 #صفحه ثبت نام 2
@@ -70,6 +52,9 @@ def register(request):
             'form' : form,
       }
       return render(request ,'accounts/register.html',context)
+
+
+
 
 #پروفایل کاربری
 @login_required
@@ -94,18 +79,27 @@ def myprofile(request):
       }
       return render(request, 'accounts/profile.html', context)
 
+
+
+
 #ثبت آگهی
 @login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            Book.user=User.username
             form.save()
+            Book.user = User
+            def form_valid(self, form):
+                  form.instance.user = self.request.user
+                  return super().form_valid(form)
             return redirect('/')
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+
 
 #لیست دانشگاه ها
 def universitylist(request):
@@ -117,6 +111,9 @@ def universitylist(request):
 
     return render(request, 'blog/universiy_list.html',context)
 
+
+
+
 #لیست رشته ها
 def fieldlist(request):
     allof_filed = Field.objects.all()
@@ -127,6 +124,8 @@ def fieldlist(request):
 
     return render(request, 'blog/field_list.html',context)
 
+
+
 #جزوه های موجود در دانشگاه مورد نظر
 def university_books(request, uni_id):
     allof_books = Book.objects.filter(university=uni_id)
@@ -134,6 +133,8 @@ def university_books(request, uni_id):
         'allof_books': allof_books,
     }
     return render(request, 'home.html', context)
+
+
 
 #جزوه های موجود در رشته ی مورد نظر
 def field_books(request, field_id):
@@ -144,9 +145,6 @@ def field_books(request, field_id):
     return render(request, 'home.html', context)
 
 
-#
-# def search(request):
-#     return HttpResponse(Book.objects.annotate(search=SearchVector('name', 'description', 'university'),).filter(search="جزوه"))
 
 def search(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -162,16 +160,7 @@ def search(request):
         form = PostForm() # An unbound form
 
     return render('contact.html', {'form': form,})
-#def post(self, request):
-      #form = HomeForm(request.POST)
-      #if form.is_valid():
-            #text = form.cleaned_data['post']
-            #form = HomeForm()
-      #context = {
-            #'form':form , 'text': text
-      #}
-      
-      #return render(request, self.template_name , context)
+
 
 
 

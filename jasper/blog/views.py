@@ -9,7 +9,7 @@ from django.views import generic
 from django.shortcuts import redirect
 from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 
 # Create your views here.
@@ -38,6 +38,20 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
       model = Book
       template_name = 'detail.html' #refrence: <app>/<mode>_<viewType>.html
+
+
+
+#ثبت آگهی با استفاده از create view
+#class base view
+class PostCreatelView(CreateView):
+      model = Book
+      fields = ['name', 'master','field','university','status','status2','price','description']
+      template_name = 'blog/post_edit.html' #refrence: <app>/<mode>_<viewType>.html
+
+      def form_valid(self, form):
+            form.instance.author = self.request.user
+            return super().form_valid(form)
+
 
 
 

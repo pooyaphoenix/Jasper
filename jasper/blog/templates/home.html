@@ -72,7 +72,7 @@
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ Book.description}}</p>
             <small class="text-muted" dir="rtl">
                    <img class="rounded-circle" src="{{ Book.user.profile.image.url }}"> 
-                <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{Book.user}}</a>
+                <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{Book.author}}</a>
                 <br>
                 {{ Book.date_posted|date:"F d, Y" }}
             </small>

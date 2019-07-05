@@ -33,7 +33,7 @@ class BookAdmin(admin.ModelAdmin):
             'fields': ('name', 'description', 'master', 'status','date_posted')
         }),
         ('second', {
-             'fields': ('price', 'user', 'field', 'university')
+             'fields': ('price', 'author', 'field', 'university')
 
         })
     )

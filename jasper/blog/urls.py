@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
 from . import views
-from .views import PostListView, PostDetailView
+from .views import PostListView, PostDetailView, PostCreatelView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
@@ -18,7 +18,7 @@ urlpatterns=[
     path('myprofile/', views.myprofile , name = 'myprofile'),
 
 
-    path('post/new/', views.post_new, name='post_new'),
+    path('post/new/', PostCreatelView.as_view(), name='post_new'),
     path('universitylist/', views.universitylist, name='universitylist'),
     path('filedlist/', views.fieldlist, name='fieldlist'),
     path('search/', views.search, name='search'),

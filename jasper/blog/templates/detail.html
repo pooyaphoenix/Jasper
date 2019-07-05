@@ -26,14 +26,15 @@
         دریافت کنید. </p></p>
 {% endif %}
 </div>
-<div class="center">
+<div  style="width: 50%; margin: 5% 0% 0% 25%">
 
-    <div class="card border-success mb-3" style="max-width: 100%; margin:1%">
+    <div class="card border-success mb-3">
         <div class="card-header bg-transparent border-success" style="text-align: right;" dir="rtl">
 
             <div style="text-align: center">
                 <p class="thick">{{object.name}}</p>
                 <p class="skinny">{{object.field}}</p>
+
             </div>
 
         </div>
@@ -46,9 +47,10 @@
 
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ object.description}}</p>
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ object.master}}</p>
-             <p class="skinny" dir="rtl"><a style="color: black ; float: right" href="#">{{object.user}}</a>
-            </p><br>
-            <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ object.price}}</p>
+            <p class="skinny" dir="rtl">نوشته شده توسط : <a style="color: black ; float: left;" href="#">{{object.author}}</a> </p>
+            <small class="text-muted" style="; float: left">{{ object.date_posted|date:"F d, Y" }} : در تاریخ </small>
+            <br>
+            <p class="skinny text-muted" style="text-align: right; color: black;" dir="rtl">قیمت : {{ object.price}}</p>
 
         </div>
         <a href="/{{Book.id}}">

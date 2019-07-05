@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 def index(request):
@@ -51,6 +51,27 @@ class PostCreatelView(LoginRequiredMixin, CreateView):
       def form_valid(self, form):
             form.instance.author = self.request.user
             return super().form_valid(form)
+
+
+
+
+#ّبروزرسانی آگهی با استفاده از update view
+#class base view
+class PostUpdatelView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+      model = Book
+      fields = ['name', 'master','field','university','status','status2','price','description']
+      template_name = 'blog/post_edit.html' #refrence: <app>/<mode>_<viewType>.html
+
+      def form_valid(self, form):
+            form.instance.author = self.request.user
+            return super().form_valid(form)
+
+      def test_func(self):
+            book = self.get_object()
+            if self.request.user == book.author:
+                  return True
+            return False
+
 
 
 

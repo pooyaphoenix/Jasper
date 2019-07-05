@@ -13,10 +13,6 @@ class userform2(UserCreationForm):
         model = User
         fields = ('username','email')
 
-#class UserForm(forms.ModelForm):
-   # class Meta:
-   #     model = User
-   #     exclude = ['description']
 
 class PostForm(forms.ModelForm):
 

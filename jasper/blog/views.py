@@ -9,8 +9,8 @@ from django.views import generic
 from django.shortcuts import redirect
 from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView, CreateView
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 def index(request):
@@ -43,7 +43,7 @@ class PostDetailView(DetailView):
 
 #ثبت آگهی با استفاده از create view
 #class base view
-class PostCreatelView(CreateView):
+class PostCreatelView(LoginRequiredMixin, CreateView):
       model = Book
       fields = ['name', 'master','field','university','status','status2','price','description']
       template_name = 'blog/post_edit.html' #refrence: <app>/<mode>_<viewType>.html

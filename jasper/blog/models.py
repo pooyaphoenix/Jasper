@@ -3,9 +3,12 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from PIL import Image
-import 
+import datetime
 from django.urls import reverse
 
+
+
+# جدول کتاب
 class Book(models.Model):
     date_posted = models.DateTimeField(default=datetime.datetime.now(), blank=True)
     name = models.CharField(max_length=100)
@@ -37,14 +40,20 @@ class Book(models.Model):
     def __str__(self):
         return '{0}, {1}'.format(self.name,self.price)
 
+    def get_absolute_url(self):
+        return reverse ('post_new', kwargs={'pk':self.pk})
+
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
     field = models.ForeignKey('Field', on_delete=models.SET_NULL, null=True)
     university = models.ForeignKey('Universty', on_delete=models.SET_NULL, null=True)
 
-    #many to mnay
-    #university = models.ManyToManyField(Universty, help_text='')
 
 
+
+
+
+
+# جدول یوزر
 class User2(models.Model):
     username2=models.CharField(max_length=100 )
     password=models.CharField(max_length=50 )
@@ -55,12 +64,7 @@ class User2(models.Model):
     phone_number=models.CharField(null=True,blank=True,max_length=11)
     description=models.CharField(max_length=200,blank=True)
 
-    # many to many
-    #book = models.ManyToManyField(Book, help_text='select what you want book to sell ?')
-
-    # one to many
-    # field = models.ForeignKey('Field', on_delete=models.SET_NULL, null=True)
-    # section = models.ForeignKey('Section', on_delete=models.SET_NULL, null=True)
+    
 
     class Meta:
         ordering =["last_name","first_name"]

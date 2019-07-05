@@ -9,7 +9,7 @@ from django.views import generic
 from django.shortcuts import redirect
 from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 
 # Create your views here.
@@ -22,6 +22,7 @@ def index(request):
       return render(request , 'home.html',context )
 
 
+
 #نمایش کتاب ها با list view
 #class base view
 class PostListView(ListView):
@@ -30,9 +31,17 @@ class PostListView(ListView):
       context_object_name = 'allof_books'
       ordering = ['-date_posted']
 
-def detail(request,book_id):
 
-      
+
+#نمایش جزئیات پست ها با استفاده از detail view
+#class base view
+class PostDetailView(DetailView):
+      model = Book
+      template_name = 'detail.html' #refrence: <app>/<mode>_<viewType>.html
+
+
+
+def detail(request,book_id):
       bookdetail = Book.objects.get(pk = book_id)
       context = {
             'bookdetail' : bookdetail,

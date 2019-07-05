@@ -13,7 +13,8 @@
 
 {% block body %}
 
-
+{% if user.is_authenticated %}
+{% else %}
 <div class="card-header bg-transparent border-success" style="position: fixed; width: 20% ;text-align: right;"
      dir="rtl">
     <img style="width:15% ; height: 100% ; float: right" src="{% static 'logo.png'%}" alt="paper"/>
@@ -23,31 +24,31 @@
     <p class="text-muted skinny" style="float: left ;text-align: center ">
     <p class="tiny">شما میتوانید توسط مشخصات صاحب جزوه/کتاب در محصل تحصیل و یا شهر خود با وی ارتباط برقرار کرده و اثر را
         دریافت کنید. </p></p>
-
+{% endif %}
 </div>
 <div class="center">
 
     <div class="card border-success mb-3" style="max-width: 100%; margin:1%">
         <div class="card-header bg-transparent border-success" style="text-align: right;" dir="rtl">
 
-            <div>
-                <p class="thick">{{bookdetail.name}}</p>
-                <p class="skinny">{{bookdetail.field}}</p>
+            <div style="text-align: center">
+                <p class="thick">{{object.name}}</p>
+                <p class="skinny">{{object.field}}</p>
             </div>
 
         </div>
         <div class="card-body text-success">
                <img style="width:3% ;  float: right" src="{% static 'master.png'%}" alt="paper"/>
-            <p class="card-title skinny" style="padding-top: 0.5%;padding-right: 4%; text-align: right; color: black">{{ bookdetail.master}}</p>
+            <p class="card-title skinny" style="padding-top: 0.5%;padding-right: 4%; text-align: right; color: black">{{ object.master}}</p>
                 <img style="width:3% ;  float: right" src="{% static 'university.png'%}" alt="paper"/>
             <p class="text-muted skinny" style=" padding-top: 0.5%;padding-right: 4%; text-align: right" dir="rtl">
-                {{bookdetail.university}}
+                {{object.university}}
 
-            <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ bookdetail.description}}</p>
-            <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ bookdetail.master}}</p>
-             <p class="skinny" dir="rtl"><a style="color: black ; float: right" href="#">{{bookdetail.user}}</a>
+            <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ object.description}}</p>
+            <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ object.master}}</p>
+             <p class="skinny" dir="rtl"><a style="color: black ; float: right" href="#">{{object.user}}</a>
             </p><br>
-            <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ bookdetail.price}}</p>
+            <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ object.price}}</p>
 
         </div>
         <a href="/{{Book.id}}">

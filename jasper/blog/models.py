@@ -41,9 +41,9 @@ class Book(models.Model):
         return '{0}, {1}'.format(self.name,self.price)
 
     def get_absolute_url(self):
-        return reverse ('post_new', kwargs={'pk':self.pk})
+        return reverse ('post_new', kwargs={'pk': self.pk})
 
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
     field = models.ForeignKey('Field', on_delete=models.SET_NULL, null=True)
     university = models.ForeignKey('Universty', on_delete=models.SET_NULL, null=True)
 
@@ -106,7 +106,7 @@ class profile(models.Model):
     def __str__(self):
         return f'{self.user.username} profile'
 
-    def save(self):
+    def save(self,force_insert=False, force_update=False, using=None):
         super().save()
 
         img = Image.open(self.image.path)

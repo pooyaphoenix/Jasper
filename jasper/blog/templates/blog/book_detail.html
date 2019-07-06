@@ -47,20 +47,22 @@
 
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ object.description}}</p>
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ object.master}}</p>
-            <p class="skinny" dir="rtl">نوشته شده توسط : <a style="color: black ; float: left;" href="#">{{object.author}}</a> </p>
+            <p class="skinny" dir="rtl">نوشته شده توسط : <a style="color: black ; float: left;" href="#">{{object.user}}</a> </p>
             <small class="text-muted" style="; float: left">{{ object.date_posted|date:"F d, Y" }} : در تاریخ </small>
             <br>
             <p class="skinny text-muted" style="text-align: right; color: black;" dir="rtl">قیمت : {{ object.price}}</p>
 
         </div>
-        
-            <button class="btn btn-outline-success" style="float: left ; margin: 2% ; padding : 2% 10% 2% 10%">
-                باز کردن
-            </button>
-            <button class="btn btn-outline-success" style="float: left ; margin: 2% ; padding : 2% 10% 2% 10%">
-                    باز کردن
-            </button>
+        {% if object.user == user %}
+            <a class="btn btn-outline-primary" href="/post/{{ object.id }}/update" style="width: 40%; float: left ; margin: 2% ; padding : 2% 10% 2% 10%">
+             ویرایش
+            </a>
+            <a class="btn btn-outline-danger" href="/post/{{ object.id }}/delete" style="width: 40%; float: right ; margin-bottom: 2% ;margin-left: 58%;margin-top: -9%;padding : 2% 10% 2% 10%">
+                   حذف
+            </buttona>
+        {% else %}
 
+        {% endif %}
         </a>
     </div>
 </div>

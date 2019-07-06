@@ -33,11 +33,11 @@ class BookAdmin(admin.ModelAdmin):
             'fields': ('name', 'description', 'master', 'status','date_posted')
         }),
         ('second', {
-             'fields': ('price', 'author', 'field', 'university')
+             'fields': ('price', 'user', 'field', 'university')
 
         })
     )
-    list_display = ('name', 'price', 'master', 'field', 'author','status','university')
+    list_display = ('name', 'price', 'master', 'field', 'user','status','university')
     search_fields = ('name', 'master', 'field')
 
 admin.site.register(Universty)

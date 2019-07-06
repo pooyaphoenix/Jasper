@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
-from .models import Book,Universty,Field
+from .models import Book,Universty,Field, profile
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import userform2 , PostForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserForm , PostForm, UserUpdateForm, ProfileUpdateForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import redirect
@@ -37,7 +37,6 @@ class PostListView(ListView):
 #class base view
 class PostDetailView(DetailView):
       model = Book
-      template_name = 'detail.html' #refrence: <app>/<mode>_<viewType>.html
 
 
 
@@ -46,10 +45,9 @@ class PostDetailView(DetailView):
 class PostCreatelView(LoginRequiredMixin, CreateView):
       model = Book
       fields = ['name', 'master','field','university','status','status2','price','description']
-      template_name = 'blog/post_edit.html' #refrence: <app>/<mode>_<viewType>.html
-
+      success_url = '/'
       def form_valid(self, form):
-            form.instance.author = self.request.user
+            form.instance.user = self.request.user
             return super().form_valid(form)
 
 
@@ -60,15 +58,15 @@ class PostCreatelView(LoginRequiredMixin, CreateView):
 class PostUpdatelView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
       model = Book
       fields = ['name', 'master','field','university','status','status2','price','description']
-      template_name = 'blog/post_edit.html' #refrence: <app>/<mode>_<viewType>.html
+      success_url = '/'
 
       def form_valid(self, form):
-            form.instance.author = self.request.user
+            form.instance.user = self.request.user
             return super().form_valid(form)
 
       def test_func(self):
             book = self.get_object()
-            if self.request.user == book.author:
+            if self.request.user == book.user:
                   return True
             return False
 
@@ -80,13 +78,14 @@ class PostUpdatelView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
       model = Book
       success_url = '/'
-      template_name = 'delete.html' #refrence: <app>/<mode>_<viewType>.
       
       def test_func(self):
             book = self.get_object()
-            if self.request.user == book.author:
+            if self.request.user == book.user:
                   return True
             return False
+
+
 
 
 
@@ -107,14 +106,14 @@ def jasper(request):
 #صفحه ثبت نام 2
 def register(request):
       if request.method == 'POST':
-            form = userform2(request.POST)
+            form = UserForm(request.POST)
             if form.is_valid():
                   form.save()
                   username = form.cleaned_data.get('username')
                   messages.success(request , f'!ایجاد شد {username}  حساب کاربری')
                   return redirect('/login')
       else:
-            form = userform2()
+            form = UserForm()
       context = {
             'form' : form,
       }
@@ -130,7 +129,7 @@ def myprofile(request):
             u_form = UserUpdateForm(request.POST, instance=request.user)
             p_form = ProfileUpdateForm(request.POST,
             request.FILES, 
-            instance=request.user.profile,)
+            instance=request.user.profile)
             if u_form.is_valid() and p_form.is_valid():
                   u_form.save()
                   p_form.save()

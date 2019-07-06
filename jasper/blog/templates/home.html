@@ -51,13 +51,13 @@
             <img style="width:8% ; height: 8% ; float: right" src="{% static 'paper.png'%}" alt="paper"/>
             <a class="card-text"
                style="color: black ; font-size: 150% ; float: right ; margin-right: 2% ;margin-top: 2.5% "
-               href="/{{Book.id}}"><p class="skinny">{{Book.name}}</p></a>
+               href="/post/{{Book.id}}"><p class="skinny">{{Book.name}}</p></a>
             <p class="text-muted skinny" style="float: left ; margin: 0% ">{{Book.field}}</p>
             {% else %}
             <img style="width:8% ; height: 8% ; float: right" src="{% static 'book.png'%}" alt="paper"/>
             <a class="card-text"
                style="color: black ; font-size: 150% ; float: right ; margin-right: 2% ;margin-top: 2.5% "
-               href="/{{Book.id}}"><p class="skinny">{{Book.name}}</p></a>
+               href="/post/{{Book.id}}"><p class="skinny">{{Book.name}}</p></a>
             <p class="text-muted skinny" style="float: left ; margin: 0% ">{{Book.field}}</p>
             {% endif %}
         </div>
@@ -71,13 +71,14 @@
             </p>
             <p class="skinny" style="text-align: right; color: black;" dir="rtl">{{ Book.description}}</p>
             <small class="text-muted" dir="rtl">
-                   <img class="rounded-circle" src="{{ Book.user.profile.image.url }}"> 
-                <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{Book.author}}</a>
+                <a style="color:rgb(85, 85, 85) ; float: left" href="#">نوشته شده توسط {{Book.user}}</a>
+                <br>
+                <img class="rounded-circle" style="width:10%;" src="{{ Book.user.profile.image.url }}"> 
                 <br>
                 {{ Book.date_posted|date:"F d, Y" }}
             </small>
         </div>
-        <a href="/{{Book.id}}">
+        <a href="/post/{{Book.id}}">
             <button class="btn btn-outline-success" style="float: left ; margin: 2% ; padding : 2% 5% 0% 5%">
                 <p class="skinny"> نمایش جزئیات </p>
             </button>

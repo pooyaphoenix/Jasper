@@ -27,7 +27,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),  # new
     path('accounts/', include('blog.urls')),  # new
     path('', TemplateView.as_view(template_name='home.html'), name='home'),  # new
-    
     #class base views for login and logout
     path('login/' , auth_views.LoginView.as_view(template_name='accounts/login.html'),name = 'login'),  
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),

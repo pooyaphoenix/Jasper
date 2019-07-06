@@ -23,7 +23,7 @@ urlpatterns=[
     path('post/new/', PostCreatelView.as_view(), name='post_new'),
     path('universitylist/', views.universitylist, name='universitylist'),
     path('filedlist/', views.fieldlist, name='fieldlist'),
-    path('search/', views.search, name='search'),
+    path('search/', views.search, name='query'),
 
     # path('list',views.BookListView.as_view(),name='book_list'),
    # path('detail/<int:pk>', views.BookDetailView.as_view(), name='book_detail'),
